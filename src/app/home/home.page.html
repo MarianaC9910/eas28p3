@@ -1,20 +1,39 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Blank
+      Plugins de Capacitor
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+<p>
+  <ion-button expand="block" (click)="copyText()">
+    Copiar texto al portapapeles
+  </ion-button>
+</p>
+<p>
+  <ion-button expand="block" (click)="readText()">
+    Leer texto del portapapeles
+  </ion-button>
+</p>
+  <ion-button expand="block" (click)="increaseZoom()">
+    Aumentar zoom de texto
+  </ion-button>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-button expand="block" (click)="decreaseZoom()">
+    Disminuir zoom de texto
+  </ion-button>
+
+  <ion-button expand="block" (click)="showToast()">
+    Mostrar Toast
+  </ion-button>
+
+  <ion-text>
+    <p>
+      Texto de ejemplo para probar el zoom. Este texto debería cambiar de tamaño si el zoom se modifica en Android/iOS.
+    </p>
+  </ion-text>
+
 </ion-content>
+
