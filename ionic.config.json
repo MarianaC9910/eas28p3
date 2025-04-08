@@ -1,0 +1,7 @@
+{
+  "name": "eas28p3",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
