@@ -3,12 +3,19 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonText } from 
 import { Clipboard } from '@capacitor/clipboard';
 import { TextZoom } from '@capacitor/text-zoom';
 import { Toast } from '@capacitor/toast';
+import { Geolocation } from '@capacitor/geolocation';
+import { Network } from '@capacitor/network';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonText],
+  template: `
+    <button (click)="takePhoto()">Tomar Foto</button>
+    <button (click)="getLocation()">Obtener Ubicación</button>
+    <button (click)="checkNetwork()">Verificar Red</button>
+  `,
 })
 
 export class HomePage {
@@ -46,5 +53,28 @@ export class HomePage {
       duration: 'short',
       position: 'bottom',
     });
+  }
+  
+  location: { latitude: number; longitude: number } | null = null;
+  networkStatus: boolean | null = null;
+  async getLocation() {
+    try {
+      const position = await Geolocation.getCurrentPosition();
+      this.location = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      };
+    } catch (error) {
+      console.error('Error al obtener ubicación:', error);
+    }
+  }
+
+  async checkNetwork() {
+    try {
+      const status = await Network.getStatus();
+      this.networkStatus = status.connected;
+    } catch (error) {
+      console.error('Error al verificar red:', error);
+    }
   }
 }

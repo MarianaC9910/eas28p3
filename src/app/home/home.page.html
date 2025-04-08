@@ -8,24 +8,24 @@
 
 <ion-content class="ion-padding">
 <p>
-  <ion-button expand="block" (click)="copyText()">
+  <ion-button  (click)="copyText()">
     Copiar texto al portapapeles
   </ion-button>
 </p>
 <p>
-  <ion-button expand="block" (click)="readText()">
+  <ion-button  (click)="readText()">
     Leer texto del portapapeles
   </ion-button>
 </p>
-  <ion-button expand="block" (click)="increaseZoom()">
+  <ion-button  (click)="increaseZoom()">
     Aumentar zoom de texto
   </ion-button>
 
-  <ion-button expand="block" (click)="decreaseZoom()">
+  <ion-button (click)="decreaseZoom()">
     Disminuir zoom de texto
   </ion-button>
 
-  <ion-button expand="block" (click)="showToast()">
+  <ion-button  (click)="showToast()">
     Mostrar Toast
   </ion-button>
 
@@ -34,5 +34,22 @@
 Texto de ejemplo    </p>
   </ion-text>
 
+</ion-content>
+<ion-content class="ion-padding">
+  <ion-button expand="full" (click)="getLocation()"> Obtener Ubicación</ion-button>
+  <ion-button expand="full" (click)="checkNetwork()"> Verificar Red</ion-button>
+
+
+  <div *ngIf="location">
+    <h3>Ubicación:</h3>
+    <p>Latitud: {{ location?.latitude }}</p>
+    <p>Longitud: {{ location?.longitude }}</p>
+  </div>
+  
+
+  <div *ngIf="networkStatus !== null">
+    <h3>Estado de Red:</h3>
+    <p>{{ networkStatus ? ' Conectado a Internet' : ' Sin conexión' }}</p>
+  </div>
 </ion-content>
 
